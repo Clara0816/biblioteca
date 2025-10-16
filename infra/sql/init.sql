@@ -95,11 +95,11 @@ INSERT INTO Livro (titulo, autor, editora, ano_publicacao, isbn, quant_total, qu
 VALUES 
 ('O Sol é Para Todos ', 'Harper Lee', 'Collins', '1960', '978-0007529546', 10, 10, 151.00, 'Disponível'),
 ('As Flores do Mal', ' Clares ', 'Companhia das Letras', '1857', '978-8535916770', 9, 9, 95.00, 'Disponível'),
-('Moby Dick', 'Herman Melville ', 'Classics', '1851', '978-0142337230', 5, 5, 125.00, 'Disponível'),
+('O Nome da Rosa', 'Umberto Eco', 'Classics', '1980', '978-0142337230', 5, 5, 125.00, 'Disponível'),
 ('Frankenstein ', 'Mary Shelley', 'Crear', '1818', '978-8524008731', 10, 10, 55.00, 'Disponível'),
 ('Hamlet', 'William Shakespeare ', 'Penguin', '1603', '978-0841036137', 4, 4, 85.00, 'Disponível'),
 ('Guerra', ' Leon Tolstói', 'Crear', '1869', '978-0067458424', 3, 3, 145.00, 'Disponível'),
-('Moby Dick', 'Herman Melville ', ' Classics', '1851', '978-0140749266', 5, 6, 115.00, 'Disponível'),
+('Tubarão', ' Peter Benchley', ' Classics', '1974', '978-0140749266', 5, 6, 115.00, 'Disponível'),
 ('Cem Anos de Solidão ', 'Gabriel García Márquez', 'Classics', '1967', '978-0143439518', 7, 7, 80.00, 'Disponível'),
 ('Fahrenheit 451', 'Ray Bradbury', 'Penguin', '1953', '978-0144437247', 3, 3, 170.00, 'Disponível'),
 ('Em Busca do Tempo Perdido', 'Marcel Proust ', 'Companhia ', '1927', '978-1535922343', 2, 2, 100.00, 'Disponível');
