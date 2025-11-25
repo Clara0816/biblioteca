@@ -2,8 +2,8 @@ import Livro from "../model/Livro.js"
 import type { LivroDTO } from "../interface/LivroDTO.js";
 import type { Request, Response } from "express";
 
-class LivroController extends Livro {   
-    
+class LivroController extends Livro {
+
     static async todos(req: Request, res: Response): Promise<Response> {
         try {
             // Chama o método listarCarros da classe Carro para buscar todos os carros no banco de dados

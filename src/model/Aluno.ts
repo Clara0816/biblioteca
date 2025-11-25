@@ -3,36 +3,36 @@ import type { AlunoDTO } from "../interface/AlunoDTO.js";
 
 const database = new DatabaseModel().pool; // Inicializa o pool de conexões com o banco de dados
 
-class Aluno{
-  private idAluno: number = 0;
-  private nome: string;
-  private ra: number;
-  private sobrenome: string;
-  private dataNascimento: Date;
-  private endereco: string;
-  private email: string;
-  private celular: number;
+class Aluno {
+    private idAluno: number = 0;
+    private nome: string;
+    private ra: number;
+    private sobrenome: string;
+    private dataNascimento: Date;
+    private endereco: string;
+    private email: string;
+    private celular: number;
 
-  constructor( 
-    _nome: string,
-    _ra: number,
-    _sobrenome: string,
-    _dataNascimento: Date,
-    _endereco: string,
-    _email: string,
-    _celular: number,
-  ){
-    this.nome =_nome;
-    this.ra =_ra;
-    this.sobrenome =_sobrenome;
-    this.dataNascimento =_dataNascimento;
-    this.endereco =_endereco;
-    this.email =_email;
-    this.celular =_celular;
-  }
+    constructor(
+        _nome: string,
+        _ra: number,
+        _sobrenome: string,
+        _dataNascimento: Date,
+        _endereco: string,
+        _email: string,
+        _celular: number,
+    ) {
+        this.nome = _nome;
+        this.ra = _ra;
+        this.sobrenome = _sobrenome;
+        this.dataNascimento = _dataNascimento;
+        this.endereco = _endereco;
+        this.email = _email;
+        this.celular = _celular;
+    }
 
 
-     public setIdAluno(_idAluno: number): void {
+    public setIdAluno(_idAluno: number): void {
         this.idAluno = _idAluno;
     }
 
@@ -40,7 +40,7 @@ class Aluno{
         return this.idAluno;
     }
 
-     public getNome(): string {
+    public getNome(): string {
         return this.nome;
     }
 
@@ -68,7 +68,7 @@ class Aluno{
         return this.dataNascimento;
     }
 
-    public setDataNascimento(_dataNascimento: Date ){
+    public setDataNascimento(_dataNascimento: Date) {
         this.dataNascimento = _dataNascimento;
     }
 
@@ -97,34 +97,34 @@ class Aluno{
     }
 
     static async listarAluno(idAluno: number): Promise<Aluno | null> {
-        try{ 
+        try {
             const querySelectAluno = `SELECT * FROM aluno WHERE id_aluno=$1;`;
 
             const respostaBD = await database.query(querySelectAluno, [idAluno]);
 
-            if(respostaBD.rowCount !=0) {
-                    const aluno: Aluno = new Aluno(
-                        
-                        respostaBD.rows[0].nome,
-                        respostaBD.rows[0].ra,
-                        respostaBD.rows[0].sobrenome,
-                        respostaBD.rows[0].data_nascimento,
-                        respostaBD.rows[0].endereco,
-                        respostaBD.rows[0].email,
-                        respostaBD.rows[0].celular
-                    );
-                    aluno.setIdAluno(respostaBD.rows[0].id_aluno);
+            if (respostaBD.rowCount != 0) {
+                const aluno: Aluno = new Aluno(
 
-                    return aluno;
+                    respostaBD.rows[0].nome,
+                    respostaBD.rows[0].ra,
+                    respostaBD.rows[0].sobrenome,
+                    respostaBD.rows[0].data_nascimento,
+                    respostaBD.rows[0].endereco,
+                    respostaBD.rows[0].email,
+                    respostaBD.rows[0].celular
+                );
+                aluno.setIdAluno(respostaBD.rows[0].id_aluno);
+
+                return aluno;
             }
 
             return null;
-        }catch (error) {
+        } catch (error) {
             console.error(`Erro ao buscar cliente no banco de dados. ${error}`);
             return null;
         }
     }
-    
+
 
     static async cadastrarAluno(aluno: AlunoDTO): Promise<boolean> {
         try {
@@ -141,10 +141,10 @@ class Aluno{
             const respostaBD = await database.query(queryInsertAluno, [
                 aluno.nome.toUpperCase(), // Nome do cliente em maiúsculas
                 aluno.ra,                // CPF do cliente
-                aluno.sobrenome,
+                aluno.sobrenome.toUpperCase(),
                 aluno.dataNascimento,
-                aluno.endereco,
-                aluno.email,
+                aluno.endereco.toUpperCase(),
+                aluno.email.toUpperCase(),
                 aluno.celular
             ]);
 
@@ -170,8 +170,8 @@ class Aluno{
         }
     }
 
-    
-static async listarAlunos(): Promise<Array<Aluno> | null> {
+
+    static async listarAlunos(): Promise<Array<Aluno> | null> {
         try {
             // Cria uma lista vazia que irá armazenar os objetos do tipo Cliente
             let listaDeAlunos: Array<Aluno> = [];

@@ -1,12 +1,12 @@
 import Emprestimo from "../model/Emprestimo.js"
-import type { EmprestimoDTO } from "../interface/Emprestimo.js";
+import type { EmprestimoDTO } from "../interface/EmprestimoDTO.js";
 import type { Request, Response } from "express";
 
 
 
 
-class EmprestimoController extends Emprestimo {   
-    
+class EmprestimoController extends Emprestimo {
+
     static async todos(req: Request, res: Response): Promise<Response> {
         try {
             // Chama o método listarCarros da classe Carro para buscar todos os carros no banco de dados
